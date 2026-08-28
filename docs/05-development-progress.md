@@ -8,59 +8,59 @@ Analisis, PRD, ERD, dan audit database telah diselesaikan.
 
 ## Phase 1 --- Analysis
 
--   [x] Analisis sistem
--   [x] Identifikasi stakeholder
--   [x] Identifikasi role
--   [x] Functional requirements
--   [x] Non-functional requirements
--   [x] Business rules
+- [x] Analisis sistem
+- [x] Identifikasi stakeholder
+- [x] Identifikasi role
+- [x] Functional requirements
+- [x] Non-functional requirements
+- [x] Business rules
 
 ## Phase 2 --- Product Requirements
 
--   [x] Product overview
--   [x] Product goals
--   [x] User personas
--   [x] User stories/requirements
--   [x] Feature requirements
--   [x] Permission matrix
--   [x] Acceptance criteria
--   [x] MVP scope
--   [x] Future roadmap
+- [x] Product overview
+- [x] Product goals
+- [x] User personas
+- [x] User stories/requirements
+- [x] Feature requirements
+- [x] Permission matrix
+- [x] Acceptance criteria
+- [x] MVP scope
+- [x] Future roadmap
 
 ## Phase 3 --- Database Design
 
--   [x] ERD
--   [x] Relationship audit
--   [x] Cardinality audit
--   [x] Constraint audit
--   [x] Nullable relationship audit
--   [x] Polymorphic relationship design
--   [x] Soft delete strategy
--   [x] Database Schema V1.1
--   [x] DBML untuk dbdiagram.io
+- [x] ERD
+- [x] Relationship audit
+- [x] Cardinality audit
+- [x] Constraint audit
+- [x] Nullable relationship audit
+- [x] Polymorphic relationship design
+- [x] Soft delete strategy
+- [x] Database Schema V1.1
+- [x] DBML untuk dbdiagram.io
 
 ## Phase 4 --- Project Setup
 
--   [ ] Membuat repository GitHub
--   [ ] Membuat project Laravel 12
--   [ ] Install Laravel UI
--   [ ] Setup Bootstrap
--   [ ] Setup Vite
--   [ ] Konfigurasi MySQL
--   [ ] Setup `.env`
--   [ ] Menjalankan aplikasi lokal
--   [ ] Verifikasi authentication scaffold
+- [x] Membuat repository GitHub
+- [x] Membuat project Laravel 12
+- [x] Install Laravel UI
+- [x] Setup Bootstrap
+- [x] Setup Vite
+- [x] Konfigurasi MySQL
+- [x] Setup `.env`
+- [x] Menjalankan aplikasi lokal
+- [x] Verifikasi authentication scaffold
 
 ## Phase 5 --- Authentication
 
--   [ ] Login
--   [ ] Logout
--   [ ] Register
--   [ ] Password reset
--   [ ] Email verification
--   [ ] Role ENUM
--   [ ] Middleware role
--   [ ] Authorization
+- [ ] Login
+- [ ] Logout
+- [ ] Register
+- [ ] Password reset
+- [ ] Email verification
+- [ ] Role ENUM
+- [ ] Middleware role
+- [ ] Authorization
 
 ## Phase 6 --- Database Migration
 
@@ -95,96 +95,96 @@ Urutan migration yang direncanakan:
 
 ## Phase 7 --- Model & Relationship
 
--   [ ] User model
--   [ ] Fakultas model
--   [ ] ProgramStudi model
--   [ ] TahunAkademik model
--   [ ] Dosen model
--   [ ] Mahasiswa model
--   [ ] MataKuliah model
--   [ ] Kelas model
--   [ ] KelasDosen model
--   [ ] Enrollment model
--   [ ] Materi model
--   [ ] Pengumuman model
--   [ ] Tugas model
--   [ ] Submission model
--   [ ] SubmissionFile model
--   [ ] AssignmentGrade model
--   [ ] Kuis model
--   [ ] SoalKuis model
--   [ ] PilihanJawaban model
--   [ ] QuizAttempt model
--   [ ] QuizAnswer model
--   [ ] Diskusi model
--   [ ] DiskusiPesan model
--   [ ] Notification
--   [ ] EmailLog model
--   [ ] ActivityLog model
+- [ ] User model
+- [ ] Fakultas model
+- [ ] ProgramStudi model
+- [ ] TahunAkademik model
+- [ ] Dosen model
+- [ ] Mahasiswa model
+- [ ] MataKuliah model
+- [ ] Kelas model
+- [ ] KelasDosen model
+- [ ] Enrollment model
+- [ ] Materi model
+- [ ] Pengumuman model
+- [ ] Tugas model
+- [ ] Submission model
+- [ ] SubmissionFile model
+- [ ] AssignmentGrade model
+- [ ] Kuis model
+- [ ] SoalKuis model
+- [ ] PilihanJawaban model
+- [ ] QuizAttempt model
+- [ ] QuizAnswer model
+- [ ] Diskusi model
+- [ ] DiskusiPesan model
+- [ ] Notification
+- [ ] EmailLog model
+- [ ] ActivityLog model
 
 ## Phase 8 --- Admin
 
--   [ ] Admin dashboard
--   [ ] User management
--   [ ] Fakultas management
--   [ ] Program studi management
--   [ ] Tahun akademik management
--   [ ] Mata kuliah management
--   [ ] Kelas management
+- [ ] Admin dashboard
+- [ ] User management
+- [ ] Fakultas management
+- [ ] Program studi management
+- [ ] Tahun akademik management
+- [ ] Mata kuliah management
+- [ ] Kelas management
 
 ## Phase 9 --- Dosen
 
--   [ ] Dashboard dosen
--   [ ] Daftar kelas
--   [ ] Materi
--   [ ] Pengumuman
--   [ ] Tugas
--   [ ] Submission review
--   [ ] Penilaian tugas
--   [ ] Kuis
--   [ ] Soal kuis
--   [ ] Hasil attempt
--   [ ] Diskusi
+- [ ] Dashboard dosen
+- [ ] Daftar kelas
+- [ ] Materi
+- [ ] Pengumuman
+- [ ] Tugas
+- [ ] Submission review
+- [ ] Penilaian tugas
+- [ ] Kuis
+- [ ] Soal kuis
+- [ ] Hasil attempt
+- [ ] Diskusi
 
 ## Phase 10 --- Mahasiswa
 
--   [ ] Dashboard mahasiswa
--   [ ] Daftar kelas
--   [ ] Detail kelas
--   [ ] Materi
--   [ ] Pengumuman
--   [ ] Pengumpulan tugas
--   [ ] Resubmission
--   [ ] Kuis
--   [ ] Nilai tugas
--   [ ] Nilai kuis
--   [ ] Diskusi
+- [ ] Dashboard mahasiswa
+- [ ] Daftar kelas
+- [ ] Detail kelas
+- [ ] Materi
+- [ ] Pengumuman
+- [ ] Pengumpulan tugas
+- [ ] Resubmission
+- [ ] Kuis
+- [ ] Nilai tugas
+- [ ] Nilai kuis
+- [ ] Diskusi
 
 ## Phase 11 --- Testing
 
--   [ ] Authentication test
--   [ ] Role authorization test
--   [ ] Enrollment test
--   [ ] Assignment submission test
--   [ ] Resubmission test
--   [ ] Multiple file upload test
--   [ ] Assignment grading test
--   [ ] Quiz attempt test
--   [ ] Quiz answer test
--   [ ] Discussion test
--   [ ] Notification test
+- [ ] Authentication test
+- [ ] Role authorization test
+- [ ] Enrollment test
+- [ ] Assignment submission test
+- [ ] Resubmission test
+- [ ] Multiple file upload test
+- [ ] Assignment grading test
+- [ ] Quiz attempt test
+- [ ] Quiz answer test
+- [ ] Discussion test
+- [ ] Notification test
 
 ## Phase 12 --- Deployment
 
--   [ ] Production environment
--   [ ] Production database
--   [ ] Environment variables
--   [ ] Storage configuration
--   [ ] Queue configuration jika diperlukan
--   [ ] Email configuration
--   [ ] Deployment
--   [ ] Production testing
--   [ ] Backup strategy
+- [ ] Production environment
+- [ ] Production database
+- [ ] Environment variables
+- [ ] Storage configuration
+- [ ] Queue configuration jika diperlukan
+- [ ] Email configuration
+- [ ] Deployment
+- [ ] Production testing
+- [ ] Backup strategy
 
 ## Development Principles
 
@@ -198,7 +198,7 @@ Urutan migration yang direncanakan:
 
 ## Suggested Commit History
 
-``` text
+```text
 chore: initialize Laravel project
 docs: add system analysis
 docs: add product requirements

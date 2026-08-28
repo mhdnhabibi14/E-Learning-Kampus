@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class LoginController extends Controller
@@ -25,7 +26,6 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
 
     /**
      * Create a new controller instance.
@@ -36,5 +36,24 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
         $this->middleware('auth')->only('logout');
+    }
+
+    protected function authenticated($request, $user)
+    {
+        if (! $user->is_active) {
+            Auth::logout();
+            return redirect()->route('login')->withErrors(['email' => 'Akun Anda tidak aktif.',]);
+        }
+
+        $user->update([
+            'last_login_at' => now(),
+        ]);
+
+        return match ($user->role) {
+            'admin' => redirect()->route('admin.dashboard'),
+            'dosen' => redirect()->route('dosen.dashboard'),
+            'mahasiswa' => redirect()->route('mahasiswa.dashboard'),
+            default => redirect()->route('login')->withErrors(['email' => 'Role pengguna tidak valid.',]),
+        };
     }
 }
