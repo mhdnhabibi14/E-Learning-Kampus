@@ -1,73 +1,98 @@
-@extends('layouts.app')
+<!DOCTYPE html>
+<html lang="en">
 
-@section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Login') }}</div>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ config('app.name') }}</title>
 
-                <div class="card-body">
-                    <form method="POST" action="{{ route('login') }}">
-                        @csrf
+    <!-- SEO Optimization -->
+    <meta name="description" content="Login Screen - Spark Admin Premium Bootstrap 5 Admin Dashboard Template">
+    <meta name="author" content="Spark Admin Team">
 
-                        <div class="row mb-3">
-                            <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="{{ asset('template') }}/assets/images/favicon.ico">
 
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+    <!-- Local Third-Party Libraries (100% Offline Compatible) -->
+    <link rel="stylesheet" href="{{ asset('template') }}/assets/libs/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ asset('template') }}/assets/libs/bootstrap-icons/bootstrap-icons.css">
 
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
+    <!-- Main Design System & Custom Stylesheet -->
+    <link rel="stylesheet" href="{{ asset('template') }}/assets/css/main.css">
+</head>
 
-                        <div class="row mb-3">
-                            <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
+<body>
 
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+    <div class="login-wrapper">
+        <!-- Glowing background shapes for modern visual appearance -->
+        <div class="login-bg-shape login-bg-shape-1"></div>
+        <div class="login-bg-shape login-bg-shape-2"></div>
 
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
+        <!-- Main centered login card -->
+        <div class="login-card">
 
-                        <div class="row mb-3">
-                            <div class="col-md-6 offset-md-4">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+            <!-- Brand Identity -->
+            <a href="{{ route('login') }}" class="login-brand text-decoration-none">
+                <i class="bi bi-asterisk"></i>
+                <span>E-Learning Kampus</span>
+            </a>
 
-                                    <label class="form-check-label" for="remember">
-                                        {{ __('Remember Me') }}
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
+            <p class="login-subtitle">Silakan masuk untuk mengakses dashboard anda</p>
 
-                        <div class="row mb-0">
-                            <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Login') }}
-                                </button>
-
-                                @if (Route::has('password.request'))
-                                    <a class="btn btn-link" href="{{ route('password.request') }}">
-                                        {{ __('Forgot Your Password?') }}
-                                    </a>
-                                @endif
-                            </div>
-                        </div>
-                    </form>
+            <!-- Login Form -->
+            <form action="{{ route('login') }}" method="POST" id="loginForm" class="needs-validation" novalidate>
+                @csrf
+                <!-- Email Input Group -->
+                <div class="login-form-group">
+                    <label for="email" class="login-form-label">Email</label>
+                    <div class="login-input-group">
+                        <i class="bi bi-envelope input-icon"></i>
+                        <input type="email" name="email" id="email" class="login-input"
+                            placeholder="name@gmail.com" required>
+                    </div>
                 </div>
+
+                <!-- Password Input Group -->
+                <div class="login-form-group">
+                    <label for="password" class="login-form-label">Password</label>
+                    <div class="login-input-group">
+                        <i class="bi bi-shield-lock input-icon"></i>
+                        <input type="password" name="password" id="password" class="login-input login-input-password"
+                            placeholder="••••••••" required>
+                        <button type="button" class="password-toggle-btn" id="toggle-password"
+                            aria-label="Show password">
+                            <i class="bi bi-eye"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Options (Remember me & Forgot Password) -->
+                <div class="login-options">
+                    <a href="#" class="forgot-password-link">Forgot Password?</a>
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit" class="btn-login" id="btn-submit">
+                    <span>Sign In to Dashboard</span>
+                    <i class="bi bi-arrow-right"></i>
+                </button>
+
+            </form>
+
+            <!-- Divider -->
+            <div class="login-divider">
+                Don't have an account? <a href="#" id="link-register">Register Now</a>
             </div>
+
         </div>
     </div>
-</div>
-@endsection
+    <!-- END: Authentication Container -->
+
+    <!-- Local Bootstrap bundle -->
+    <script src="{{ asset('template') }}/assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Custom Authentication interactions script -->
+    <script src="{{ asset('template') }}/assets/js/auth.js"></script>
+</body>
+
+</html>

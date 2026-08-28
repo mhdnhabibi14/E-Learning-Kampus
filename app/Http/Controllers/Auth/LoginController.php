@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
@@ -34,21 +35,16 @@ class LoginController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest')->except('logout');
         $this->middleware('auth')->only('logout');
     }
 
-    protected function authenticated($request, $user)
+    protected function authenticated(Request $request, $user)
     {
         if (! $user->is_active) {
             Auth::logout();
             return redirect()->route('login')->withErrors(['email' => 'Akun Anda tidak aktif.',]);
         }
-
-        $user->update([
-            'last_login_at' => now(),
-        ]);
-
+        $user->update(['last_login_at' => now(),]);
         return match ($user->role) {
             'admin' => redirect()->route('admin.dashboard'),
             'dosen' => redirect()->route('dosen.dashboard'),
