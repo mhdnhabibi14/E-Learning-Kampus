@@ -1,4 +1,3 @@
-```blade
 <!DOCTYPE html>
 <html lang="id">
 
@@ -495,7 +494,7 @@
         {{-- =================================================
             FOOTER
         ================================================== --}}
-        <footer class="footer-custom py-2">
+        <footer class="footer-custom">
 
             <div class="footer-left">
 
@@ -563,4 +562,3 @@
 </body>
 
 </html>
-```

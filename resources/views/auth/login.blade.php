@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ config('app.name') }}</title>
+    <title>@yield('title', config('app.name', 'E-Learning Kampus'))</title>
 
     <!-- SEO Optimization -->
     <meta name="description" content="Login Screen - Spark Admin Premium Bootstrap 5 Admin Dashboard Template">
@@ -73,7 +73,7 @@
 
                 <!-- Submit Button -->
                 <button type="submit" class="btn-login" id="btn-submit">
-                    <span>Sign In to Dashboard</span>
+                    <span>LOGIN</span>
                     <i class="bi bi-arrow-right"></i>
                 </button>
 
@@ -81,7 +81,7 @@
 
             <!-- Divider -->
             <div class="login-divider">
-                Don't have an account? <a href="#" id="link-register">Register Now</a>
+                Belum punya akun? <a href="#" id="link-register">Daftar disini</a>
             </div>
 
         </div>
