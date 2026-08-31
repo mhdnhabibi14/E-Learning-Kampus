@@ -3,10 +3,7 @@
 @endphp
 
 <aside class="sidebar-wrapper" id="sidebar">
-
-    {{-- =====================================================
-        BRAND
-    ====================================================== --}}
+    {{-- BRAND --}}
     <div class="sidebar-brand-wrapper">
         <a href="{{ route($role . '.dashboard') }}" class="sidebar-brand text-decoration-none">
             <i class="bi bi-mortarboard-fill"></i>
@@ -14,15 +11,10 @@
         </a>
     </div>
 
-
-    {{-- =====================================================
-        MENU
-    ====================================================== --}}
+    {{-- MENU --}}
     <div class="sidebar-menu-wrapper">
 
-        {{-- =================================================
-            MENU UTAMA
-        ================================================== --}}
+        {{-- MENU UTAMA --}}
         <div class="sidebar-menu-section">
             <div class="sidebar-menu-title">
                 UTAMA
@@ -39,10 +31,7 @@
             </ul>
         </div>
 
-
-        {{-- =================================================
-            ADMIN
-        ================================================== --}}
+        {{-- ADMIN --}}
         @if ($role === 'admin')
             <div class="sidebar-menu-section">
                 <div class="sidebar-menu-title">
@@ -133,10 +122,7 @@
             </div>
         @endif
 
-
-        {{-- =================================================
-            DOSEN
-        ================================================== --}}
+        {{-- DOSEN --}}
         @if ($role === 'dosen')
             <div class="sidebar-menu-section">
                 <div class="sidebar-menu-title">
@@ -205,10 +191,7 @@
             </div>
         @endif
 
-
-        {{-- =================================================
-            MAHASISWA
-        ================================================== --}}
+        {{-- MAHASISWA --}}
         @if ($role === 'mahasiswa')
             <div class="sidebar-menu-section">
                 <div class="sidebar-menu-title">
@@ -272,10 +255,7 @@
         @endif
     </div>
 
-
-    {{-- =====================================================
-        PROFILE
-    ====================================================== --}}
+    {{-- PROFILE --}}
     <div class="sidebar-profile">
         <div class="sidebar-profile-avatar">
             @if (auth()->user()->avatar)
