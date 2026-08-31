@@ -47,9 +47,13 @@
                     <label for="email" class="login-form-label">Email</label>
                     <div class="login-input-group">
                         <i class="bi bi-envelope input-icon"></i>
-                        <input type="email" name="email" id="email" class="login-input"
-                            placeholder="name@gmail.com" required>
+                        <input type="email" name="email" id="email"
+                            class="login-input @error('email') is-invalid @enderror" value="{{ old('email') }}"
+                            placeholder="name@gmail.com" required autocomplete="email">
                     </div>
+                    @error('email')
+                        <div class="invalid-feedback d-block"> {{ $message }} </div>
+                    @enderror
                 </div>
 
                 <!-- Password Input Group -->
@@ -57,18 +61,24 @@
                     <label for="password" class="login-form-label">Password</label>
                     <div class="login-input-group">
                         <i class="bi bi-shield-lock input-icon"></i>
-                        <input type="password" name="password" id="password" class="login-input login-input-password"
-                            placeholder="••••••••" required>
+                        <input type="password" name="password" id="password"
+                            class="login-input @error('password') is-invalid @enderror" placeholder="••••••••" required
+                            autocomplete="current-password">
                         <button type="button" class="password-toggle-btn" id="toggle-password"
                             aria-label="Show password">
                             <i class="bi bi-eye"></i>
                         </button>
                     </div>
+                    @error('password')
+                        <div class="invalid-feedback d-block"> {{ $message }} </div>
+                    @enderror
                 </div>
 
                 <!-- Options (Remember me & Forgot Password) -->
                 <div class="login-options">
-                    <a href="#" class="forgot-password-link">Forgot Password?</a>
+                    <label class="login-remember"> <input type="checkbox" name="remember" value="1"
+                            {{ old('remember') ? 'checked' : '' }}> <span> Ingat saya </span> </label>
+                    <a href="#" class="forgot-password-link">Lupa Password?</a>
                 </div>
 
                 <!-- Submit Button -->
@@ -90,7 +100,6 @@
 
     <!-- Local Bootstrap bundle -->
     <script src="{{ asset('template') }}/assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
-
     <!-- Custom Authentication interactions script -->
     <script src="{{ asset('template') }}/assets/js/auth.js"></script>
 </body>

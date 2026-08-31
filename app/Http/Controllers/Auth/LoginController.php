@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\LoginRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
 class LoginController extends Controller
@@ -38,18 +40,19 @@ class LoginController extends Controller
         $this->middleware('auth')->only('logout');
     }
 
-    protected function authenticated(Request $request, $user)
+    public function login(LoginRequest $request): RedirectResponse
     {
-        if (! $user->is_active) {
-            Auth::logout();
-            return redirect()->route('login')->withErrors(['email' => 'Akun Anda tidak aktif.',]);
-        }
-        $user->update(['last_login_at' => now(),]);
-        return match ($user->role) {
-            'admin' => redirect()->route('admin.dashboard'),
-            'dosen' => redirect()->route('dosen.dashboard'),
-            'mahasiswa' => redirect()->route('mahasiswa.dashboard'),
-            default => redirect()->route('login')->withErrors(['email' => 'Role pengguna tidak valid.',]),
-        };
+        $credentials = ['email' => $request->validated('email'), 'password' => $request->validated('password'),]; /* * Attempt login. */
+        if (Auth::attempt($credentials, $request->boolean('remember'))) {
+            $request->session()->regenerate(); /* * Update last login. */
+            $request->user()->update(['last_login_at' => now(),]); /* * Redirect berdasarkan role. */
+            return match ($request->user()->role) {
+                'admin' => redirect()->route('admin.dashboard'),
+                'dosen' => redirect()->route('dosen.dashboard'),
+                'mahasiswa' => redirect()->route('mahasiswa.dashboard'),
+                default => redirect()->route('login')->withErrors(['email' => 'Role pengguna tidak valid.',]),
+            };
+        } /* * Login gagal. */
+        return back()->withErrors(['email' => 'Email atau password yang Anda masukkan salah.',])->withInput($request->only('email'));
     }
 }
