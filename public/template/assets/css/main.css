@@ -354,6 +354,157 @@ a:hover {
     opacity: 0.8;
 }
 
+/* * Area menu sidebar yang dapat di-scroll. * Brand dan profile tetap berada di tempatnya. */
+
+.sidebar-wrapper {
+    height: 100vh;
+    height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.sidebar-menu-wrapper {
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 0.5rem 0 1rem;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(0, 0, 0, 0.18) transparent;
+}
+
+.sidebar-menu-wrapper::-webkit-scrollbar {
+    width: 5px;
+}
+
+.sidebar-menu-wrapper::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.sidebar-menu-wrapper::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.18);
+    border-radius: 10px;
+}
+
+.sidebar-menu-wrapper::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 0, 0, 0.3);
+}
+
+.sidebar-menu-section {
+    flex-shrink: 0;
+    margin-bottom: 1.25rem;
+}
+
+.sidebar-menu-section:last-child {
+    margin-bottom: 0;
+}
+
+.sidebar-menu-title {
+    padding: 0.5rem 1.25rem;
+    margin-bottom: 0.35rem;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+}
+
+.sidebar-menu-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.sidebar-menu-item {
+    margin: 2px 0;
+}
+
+.sidebar-menu-link {
+    display: flex;
+    align-items: center;
+    min-height: 42px;
+    padding: 0.65rem 1.25rem;
+    text-decoration: none;
+    transition:
+        background-color 0.2s ease,
+        color 0.2s ease,
+        transform 0.2s ease;
+}
+
+/* Icon */
+.sidebar-menu-link i {
+    width: 22px;
+    margin-right: 0.75rem;
+    font-size: 1rem;
+    flex-shrink: 0;
+}
+
+/* Text */
+.sidebar-menu-link span {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.sidebar-menu-link:hover {
+    transform: translateX(2px);
+}
+
+.sidebar-menu-link.active {
+    font-weight: 600;
+}
+
+.sidebar-profile {
+    flex-shrink: 0;
+    padding: 0.85rem 1rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+/* Profile avatar */
+.sidebar-profile-avatar {
+    flex-shrink: 0;
+}
+
+/* Avatar image */
+.sidebar-profile-avatar img {
+    width: 38px;
+    height: 38px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+/* Avatar placeholder */
+.sidebar-profile-avatar-placeholder {
+    width: 38px;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+/* Profile information */
+.sidebar-profile-info {
+    min-width: 0;
+}
+
+.sidebar-profile-name {
+    font-size: 0.85rem;
+    font-weight: 600;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.sidebar-profile-email {
+    margin-top: 2px;
+    font-size: 0.72rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
 /* Minimized Sidebar Adjustments */
 body.sidebar-minimized {
     --sidebar-width: 80px;
