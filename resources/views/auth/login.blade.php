@@ -40,7 +40,7 @@
             <p class="login-subtitle">Silakan masuk untuk mengakses dashboard anda</p>
 
             <!-- Login Form -->
-            <form action="{{ route('login') }}" method="POST" id="loginForm" class="needs-validation" novalidate>
+            <form action="{{ route('login') }}" method="POST" id="loginForm" class="needs-validation">
                 @csrf
                 <!-- Email Input Group -->
                 <div class="login-form-group">
@@ -49,7 +49,7 @@
                         <i class="bi bi-envelope input-icon"></i>
                         <input type="email" name="email" id="email"
                             class="login-input @error('email') is-invalid @enderror" value="{{ old('email') }}"
-                            placeholder="name@gmail.com" required autocomplete="email">
+                            placeholder="name@gmail.com" autocomplete="email" required>
                     </div>
                     @error('email')
                         <div class="invalid-feedback d-block"> {{ $message }} </div>
@@ -62,8 +62,8 @@
                     <div class="login-input-group">
                         <i class="bi bi-shield-lock input-icon"></i>
                         <input type="password" name="password" id="password"
-                            class="login-input @error('password') is-invalid @enderror" placeholder="••••••••" required
-                            autocomplete="current-password">
+                            class="login-input @error('password') is-invalid @enderror" placeholder="••••••••"
+                            autocomplete="current-password" required>
                         <button type="button" class="password-toggle-btn" id="toggle-password"
                             aria-label="Show password">
                             <i class="bi bi-eye"></i>
