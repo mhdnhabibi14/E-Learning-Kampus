@@ -39,7 +39,8 @@
                 </div>
                 <ul class="sidebar-menu-list">
                     <li class="sidebar-menu-item">
-                        <a href="#" class="sidebar-menu-link">
+                        <a href="{{ route('admin.fakultas.index') }}"
+                            class="sidebar-menu-link {{ request()->routeIs($role . '.fakultas.index') ? 'active' : '' }}">
                             <i class="bi bi-building"></i>
                             <span>Fakultas</span>
                         </a>

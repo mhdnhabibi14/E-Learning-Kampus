@@ -4,7 +4,7 @@
     <div class="page-header">
         <div>
             <h1 class="page-title">
-                Dashboard
+                @yield('page_title', 'Dashboard')
             </h1>
             <p class="page-subtitle">
                 Selamat datang di E-Learning Kampus.
