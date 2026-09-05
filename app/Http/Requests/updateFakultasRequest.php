@@ -30,17 +30,14 @@ class updateFakultasRequest extends FormRequest
         ];
     }
 
-    protected function failedValidation(
-        \Illuminate\Contracts\Validation\Validator $validator
-    ) {
+    protected function failedValidation(\Illuminate\Contracts\Validation\Validator $validator)
+    {
         $fakultas = $this->route('fakultas');
-
         $response = redirect()
             ->back()
             ->withErrors($validator)
             ->withInput()
             ->with('open_modal', 'formFakultas' . $fakultas->id);
-
         throw new \Illuminate\Http\Exceptions\HttpResponseException($response);
     }
 

@@ -16,9 +16,33 @@
 
         <div class="card">
             <div class="card-body py-1">
-                <div class="d-flex justify-content-end mb-4">
-                    <x-admin.fakultas.form-fakultas />
+                <div class="row align-items-center mb-4">
+                    {{-- Per Page + Search --}}
+                    <div class="col-md-9">
+                        <form method="GET" action="{{ route('admin.fakultas.index') }}">
+                            <div class="row align-items-center">
+
+                                {{-- Per Page --}}
+                                <div class="col-md-4">
+                                    <x-per-page-option />
+                                </div>
+
+                                {{-- Search --}}
+                                <div class="col-md-8">
+                                    {{-- Search nanti di sini --}}
+                                </div>
+
+                            </div>
+                        </form>
+                    </div>
+
+                    {{-- Action --}}
+                    <div class="col-md-3 d-flex justify-content-end">
+                        <x-admin.fakultas.form-fakultas />
+                    </div>
+
                 </div>
+
                 <div class="table-responsive">
                     <table class="table">
                         <thead>
@@ -59,6 +83,7 @@
                             @endforelse
                         </tbody>
                     </table>
+                    {{ $fakultas->links() }}
                 </div>
             </div>
         </div>

@@ -15,8 +15,12 @@ class FakultasController extends Controller
     public function index()
     {
         $pageTitle = $this->pageTitle;
+        $perPage = request()->query('perPage', 10);
+        if (!in_array($perPage, [10, 25, 50, 100])) {
+            $perPage = 10;
+        }
         $query = Fakultas::query();
-        $fakultas = $query->paginate(10);
+        $fakultas = $query->paginate($perPage)->appends(request()->query());
         confirmDelete('Hapus Fakultas', 'Apakah Anda yakin ingin menghapus fakultas ini? Tindakan ini tidak dapat dibatalkan.');
         return view('admin.fakultas.index', compact('fakultas', 'pageTitle'));
     }

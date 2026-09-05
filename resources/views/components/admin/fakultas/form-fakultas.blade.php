@@ -4,6 +4,7 @@
 
     // Hanya gunakan old() pada modal yang sedang mengalami validasi error.
     $useOld = session('open_modal') === $modalId;
+    $statusValue = $useOld ? old('is_active') : $is_active;
 @endphp
 
 <div>
@@ -78,11 +79,11 @@
                             <select class="form-select" id="is_active_{{ $uniqueId }}" name="is_active">
                                 <option value="">-- Pilih Status --</option>
                                 <option value="1"
-                                    {{ ($useOld ? old('is_active') : $is_active) == 1 ? 'selected' : '' }}>
+                                    {{ $statusValue === true || $statusValue === '1' || $statusValue === 1 ? 'selected' : '' }}>
                                     Aktif
                                 </option>
                                 <option value="0"
-                                    {{ ($useOld ? old('is_active') : $is_active) == 0 ? 'selected' : '' }}>
+                                    {{ $statusValue === false || $statusValue === '0' || $statusValue === 0 ? 'selected' : '' }}>
                                     Tidak Aktif
                                 </option>
                             </select>
