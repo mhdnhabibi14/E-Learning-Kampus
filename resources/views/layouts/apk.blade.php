@@ -21,7 +21,6 @@
     <link rel="stylesheet" href="{{ asset('template') }}/assets/libs/flatpickr/flatpickr.min.css">
     {{-- Spark Admin --}}
     <link rel="stylesheet" href="{{ asset('template') }}/assets/css/main.css">
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
     @stack('styles')
 </head>
 

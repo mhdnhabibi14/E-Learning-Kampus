@@ -28,6 +28,6 @@ Route::middleware('auth')->group(function () {
         ->name('mahasiswa.dashboard');
 
     Route::middleware('role:admin')->prefix('admin')->name('admin.')->group(function () {
-        Route::resource('fakultas', FakultasController::class)->parameters(['fakultas' => 'fakultas']);
+        Route::resource('fakultas', FakultasController::class)->except(['create', 'edit', 'show'])->parameters(['fakultas' => 'fakultas']);
     });
 });

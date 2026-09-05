@@ -30,6 +30,18 @@ class StoreFakultasRequest extends FormRequest
         ];
     }
 
+    protected function failedValidation(
+        \Illuminate\Contracts\Validation\Validator $validator
+    ) {
+        $response = redirect()
+            ->back()
+            ->withErrors($validator)
+            ->withInput()
+            ->with('open_modal', 'formFakultasnew');
+
+        throw new \Illuminate\Http\Exceptions\HttpResponseException($response);
+    }
+
     public function messages(): array
     {
         return [

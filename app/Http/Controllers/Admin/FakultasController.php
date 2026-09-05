@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\storeFakultasRequest;
-use App\Http\Requests\updateFakultasRequest;
+use App\Http\Requests\StoreFakultasRequest;
+use App\Http\Requests\UpdateFakultasRequest;
 use App\Models\Fakultas;
 use Illuminate\Http\Request;
 
@@ -21,12 +21,7 @@ class FakultasController extends Controller
         return view('admin.fakultas.index', compact('fakultas', 'pageTitle'));
     }
 
-    public function create()
-    {
-        return view('admin.fakultas.create');
-    }
-
-    public function store(storeFakultasRequest $request)
+    public function store(StoreFakultasRequest $request)
     {
         Fakultas::create([
             'kode_fakultas' => $request->kode_fakultas,
@@ -39,17 +34,7 @@ class FakultasController extends Controller
         return redirect()->route('admin.fakultas.index');
     }
 
-    public function show(Fakultas $fakultas)
-    {
-        return view('admin.fakultas.show', compact('fakultas'));
-    }
-
-    public function edit(Fakultas $fakultas)
-    {
-        return view('admin.fakultas.edit', compact('fakultas'));
-    }
-
-    public function update(updateFakultasRequest $request, Fakultas $fakultas)
+    public function update(UpdateFakultasRequest $request, Fakultas $fakultas)
     {
         $fakultas->kode_fakultas = $request->kode_fakultas;
         $fakultas->nama_fakultas = $request->nama_fakultas;

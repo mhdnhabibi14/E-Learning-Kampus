@@ -19,48 +19,65 @@
                 <div class="d-flex justify-content-end mb-4">
                     <x-admin.fakultas.form-fakultas />
                 </div>
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th>No</th>
-                            <th>Kode Fakultas</th>
-                            <th>Nama Fakultas</th>
-                            <th>Deskripsi</th>
-                            <th>Status</th>
-                            <th>Opsi</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @forelse ($fakultas as $index => $item)
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
                             <tr>
-                                <td>{{ $index + 1 }}</td>
-                                <td>{{ $item->kode_fakultas }}</td>
-                                <td>{{ $item->nama_fakultas }}</td>
-                                <td>{{ $item->deskripsi }}</td>
-                                <td>
-                                    @if ($item->is_active)
-                                        <span class="badge bg-success">Aktif</span>
-                                    @else
-                                        <span class="badge bg-danger">Tidak Aktif</span>
-                                    @endif
-                                </td>
-                                <td>
-                                    <div class="d-flex align-items-center gap-1">
-                                        <x-admin.fakultas.form-fakultas id="{{ $item->id }}" />
-                                        <x-confirm-delete id="{{ $item->id }}" route="admin.fakultas.destroy" />
-                                    </div>
-                                </td>
+                                <th>No</th>
+                                <th>Kode Fakultas</th>
+                                <th>Nama Fakultas</th>
+                                <th>Deskripsi</th>
+                                <th>Status</th>
+                                <th>Opsi</th>
                             </tr>
-                        @empty
-                            <tr>
-                                <td colspan="6" class="text-center py-4">Tidak ada data fakultas.</td>
-                            </tr>
-                        @endforelse
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                            @forelse ($fakultas as $index => $item)
+                                <tr>
+                                    <td>{{ $fakultas->firstItem() + $index }}</td>
+                                    <td>{{ $item->kode_fakultas }}</td>
+                                    <td>{{ $item->nama_fakultas }}</td>
+                                    <td>{{ $item->deskripsi }}</td>
+                                    <td>
+                                        @if ($item->is_active)
+                                            <span class="badge bg-success">Aktif</span>
+                                        @else
+                                            <span class="badge bg-danger">Tidak Aktif</span>
+                                        @endif
+                                    </td>
+                                    <td>
+                                        <div class="d-flex align-items-center gap-1">
+                                            <x-admin.fakultas.form-fakultas id="{{ $item->id }}" />
+                                            <x-confirm-delete id="{{ $item->id }}" route="admin.fakultas.destroy" />
+                                        </div>
+                                    </td>
+                                </tr>
+                            @empty
+                                <tr>
+                                    <td colspan="6" class="text-center py-4">Tidak ada data fakultas.</td>
+                                </tr>
+                            @endforelse
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
-
     </div>
-
 @endsection
+
+@push('scripts')
+    @if (session('open_modal'))
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                const modalElement = document.getElementById(
+                    '{{ session('open_modal') }}'
+                );
+
+                if (modalElement) {
+                    const modal = new bootstrap.Modal(modalElement);
+                    modal.show();
+                }
+            });
+        </script>
+    @endif
+@endpush
