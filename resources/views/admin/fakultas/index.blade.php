@@ -28,13 +28,13 @@
                                 </div>
 
                                 {{-- Search --}}
-                                <div class="col-md-6">
+                                <div class="col-md-7">
                                     <x-filter-by-field term="search" placeholder="Cari Fakultas..." />
                                 </div>
 
                                 {{-- Reset Filter --}}
-                                <div class="col-md-3">
-                                    {{-- Reset filter nanti di sini --}}
+                                <div class="col-md-2">
+                                    <x-button-reset-filter route="admin.fakultas.index" />
                                 </div>
                             </div>
                         </form>
