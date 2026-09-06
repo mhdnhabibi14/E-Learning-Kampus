@@ -23,15 +23,19 @@
                             <div class="row align-items-center">
 
                                 {{-- Per Page --}}
-                                <div class="col-md-4">
+                                <div class="col-md-3">
                                     <x-per-page-option />
                                 </div>
 
                                 {{-- Search --}}
-                                <div class="col-md-8">
-                                    {{-- Search nanti di sini --}}
+                                <div class="col-md-6">
+                                    <x-filter-by-field term="search" placeholder="Cari Fakultas..." />
                                 </div>
 
+                                {{-- Reset Filter --}}
+                                <div class="col-md-3">
+                                    {{-- Reset filter nanti di sini --}}
+                                </div>
                             </div>
                         </form>
                     </div>
@@ -47,26 +51,34 @@
                     <table class="table">
                         <thead>
                             <tr>
-                                <th>No</th>
-                                <th>Kode Fakultas</th>
-                                <th>Nama Fakultas</th>
-                                <th>Deskripsi</th>
-                                <th>Status</th>
-                                <th>Opsi</th>
+                                <th scope="col" class="text-muted small" style="width: 60px;">NO</th>
+                                <th scope="col" class="text-muted small">KODE FAKULTAS</th>
+                                <th scope="col" class="text-muted small">NAMA FAKULTAS</th>
+                                <th scope="col" class="text-muted small">DESKRIPSI</th>
+                                <th scope="col" class="text-muted small">STATUS</th>
+                                <th scope="col" class="text-muted small text-center" style="width: 120px;">OPSI</th>
                             </tr>
                         </thead>
                         <tbody>
                             @forelse ($fakultas as $index => $item)
                                 <tr>
-                                    <td>{{ $fakultas->firstItem() + $index }}</td>
-                                    <td>{{ $item->kode_fakultas }}</td>
-                                    <td>{{ $item->nama_fakultas }}</td>
-                                    <td>{{ $item->deskripsi }}</td>
+                                    <td class="text-muted">{{ $fakultas->firstItem() + $index }}</td>
+                                    <td><span class="fw-semibold"> {{ $item->kode_fakultas }} </span></td>
+                                    <td>
+                                        <div class="fw-semibold"> {{ $item->nama_fakultas }} </div>
+                                    </td>
+                                    <td>
+                                        @if ($item->deskripsi)
+                                            <span class="text-muted"> {{ Str::limit($item->deskripsi, 60) }} </span>
+                                        @else
+                                            <span class="text-muted fst-italic"> Tidak ada deskripsi </span>
+                                        @endif
+                                    </td>
                                     <td>
                                         @if ($item->is_active)
-                                            <span class="badge bg-success">Aktif</span>
+                                            <span class="badge bg-success-subtle text-success"> Aktif </span>
                                         @else
-                                            <span class="badge bg-danger">Tidak Aktif</span>
+                                            <span class="badge bg-danger-subtle text-danger"> Tidak Aktif </span>
                                         @endif
                                     </td>
                                     <td>
@@ -78,7 +90,12 @@
                                 </tr>
                             @empty
                                 <tr>
-                                    <td colspan="6" class="text-center py-4">Tidak ada data fakultas.</td>
+                                    <td colspan="6" class="text-center py-5">
+                                        <div class="text-muted"> <i class="bi bi-building fs-1 d-block mb-3"></i>
+                                            <h6 class="mb-1"> Belum ada data Fakultas </h6>
+                                            <p class="small mb-0"> Data fakultas yang ditambahkan akan muncul di sini. </p>
+                                        </div>
+                                    </td>
                                 </tr>
                             @endforelse
                         </tbody>

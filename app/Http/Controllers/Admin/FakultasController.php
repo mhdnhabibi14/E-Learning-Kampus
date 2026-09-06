@@ -19,7 +19,13 @@ class FakultasController extends Controller
         if (!in_array($perPage, [10, 25, 50, 100])) {
             $perPage = 10;
         }
+
         $query = Fakultas::query();
+
+        $search = request()->query('search');
+        if ($search) {
+            $query->where('nama_fakultas', 'like', "%{$search}%");
+        }
         $fakultas = $query->paginate($perPage)->appends(request()->query());
         confirmDelete('Hapus Fakultas', 'Apakah Anda yakin ingin menghapus fakultas ini? Tindakan ini tidak dapat dibatalkan.');
         return view('admin.fakultas.index', compact('fakultas', 'pageTitle'));
