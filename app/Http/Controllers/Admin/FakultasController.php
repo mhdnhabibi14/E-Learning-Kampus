@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\StoreFakultasRequest;
-use App\Http\Requests\UpdateFakultasRequest;
-use App\Models\Fakultas;
+use App\Http\Requests\Admin\StoreFakultasRequest;
+use App\Http\Requests\admin\UpdateFakultasRequest;
+use App\Models\Admin\Fakultas;
 use Illuminate\Http\Request;
 
 class FakultasController extends Controller

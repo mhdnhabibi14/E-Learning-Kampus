@@ -2,7 +2,7 @@
 
 namespace App\View\Components\admin\fakultas;
 
-use App\Models\Fakultas;
+use App\Models\Admin\Fakultas;
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
