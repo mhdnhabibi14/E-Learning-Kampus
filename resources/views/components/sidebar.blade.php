@@ -46,7 +46,8 @@
                         </a>
                     </li>
                     <li class="sidebar-menu-item">
-                        <a href="#" class="sidebar-menu-link">
+                        <a href="{{ route('admin.prodi.index') }}"
+                            class="sidebar-menu-link {{ request()->routeIs($role . '.prodi.index') ? 'active' : '' }}">
                             <i class="bi bi-diagram-3"></i>
                             <span>Program Studi</span>
                         </a>

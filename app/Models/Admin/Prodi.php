@@ -3,18 +3,20 @@
 namespace App\Models\Admin;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Fakultas extends Model
+class Prodi extends Model
 {
     use SoftDeletes;
 
-    protected $table = 'fakultas';
+    protected $table = 'prodi';
 
     protected $fillable = [
-        'kode_fakultas',
-        'nama_fakultas',
+        'fakultas_id',
+        'kode_prodi',
+        'nama_prodi',
+        'jenjang',
         'deskripsi',
         'is_active',
     ];
@@ -23,8 +25,8 @@ class Fakultas extends Model
         'is_active' => 'boolean',
     ];
 
-    public function programStudi(): HasMany
+    public function fakultas(): BelongsTo
     {
-        return $this->hasMany(Prodi::class);
+        return $this->belongsTo(Fakultas::class);
     }
 }

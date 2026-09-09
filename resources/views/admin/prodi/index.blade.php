@@ -3,13 +3,12 @@
 @section('title', $pageTitle)
 
 @section('content')
-
     <div class="container-fluid">
         <div class="d-flex justify-content-between align-items-center mb-4">
             <div>
                 <h1 class="h3 mb-1">{{ $pageTitle }}</h1>
                 <p class="text-muted mb-0">
-                    Kelola data fakultas
+                    Kelola data program studi
                 </p>
             </div>
         </div>
@@ -19,7 +18,7 @@
                 <div class="row align-items-center mb-4">
                     {{-- Per Page + Search --}}
                     <div class="col-md-9">
-                        <form method="GET" action="{{ route('admin.fakultas.index') }}">
+                        <form method="GET" action="{{ route('admin.prodi.index') }}">
                             <div class="row align-items-center">
 
                                 {{-- Per Page --}}
@@ -29,12 +28,12 @@
 
                                 {{-- Search --}}
                                 <div class="col-md-7">
-                                    <x-filter-by-field term="search" placeholder="Cari Fakultas..." />
+                                    <x-filter-by-field term="search" placeholder="Cari Program Studi..." />
                                 </div>
 
                                 {{-- Reset Filter --}}
                                 <div class="col-md-2">
-                                    <x-button-reset-filter route="admin.fakultas.index" />
+                                    <x-button-reset-filter route="admin.prodi.index" />
                                 </div>
                             </div>
                         </form>
@@ -42,30 +41,38 @@
 
                     {{-- Action --}}
                     <div class="col-md-3 d-flex justify-content-end">
-                        <x-admin.fakultas.form-fakultas />
+                        <x-admin.prodi.form-prodi />
                     </div>
-
                 </div>
 
-                <div class="table-responsive">
+                <div class="table responsive">
                     <table class="table">
                         <thead>
                             <tr>
                                 <th scope="col" class="text-muted small" style="width: 60px;">NO</th>
-                                <th scope="col" class="text-muted small">KODE FAKULTAS</th>
-                                <th scope="col" class="text-muted small">NAMA FAKULTAS</th>
+                                <th scope="col" class="text-muted small">KODE PRODI</th>
+                                <th scope="col" class="text-muted small">NAMA PRODI</th>
+                                <th scope="col" class="text-muted small">FAKULTAS</th>
+                                <th scope="col" class="text-muted small">JENJANG</th>
                                 <th scope="col" class="text-muted small">DESKRIPSI</th>
                                 <th scope="col" class="text-muted small">STATUS</th>
                                 <th scope="col" class="text-muted small text-center" style="width: 120px;">OPSI</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @forelse ($fakultas as $index => $item)
+                            @forelse ($prodi as $index => $item)
                                 <tr>
-                                    <td class="text-muted">{{ $fakultas->firstItem() + $index }}</td>
-                                    <td><span class="fw-semibold"> {{ $item->kode_fakultas }} </span></td>
+                                    <td class="text-muted">{{ $prodi->firstItem() + $index }}</td>
+                                    <td><span class="fw-semibold"> {{ $item->kode_prodi }} </span></td>
                                     <td>
-                                        <div class="fw-semibold"> {{ $item->nama_fakultas }} </div>
+                                        <div class="fw-semibold"> {{ $item->nama_prodi }} </div>
+                                    </td>
+                                    <td>
+                                        <div class="fw-semibold"> {{ $item->fakultas->nama_fakultas }} </div>
+                                    </td>
+                                    <td>
+                                        <span class="badge bg-primary-subtle text-primary fw-medium"> {{ $item->jenjang }}
+                                        </span>
                                     </td>
                                     <td>
                                         @if ($item->deskripsi)
@@ -83,17 +90,17 @@
                                     </td>
                                     <td>
                                         <div class="d-flex align-items-center gap-1">
-                                            <x-admin.fakultas.form-fakultas id="{{ $item->id }}" />
-                                            <x-confirm-delete id="{{ $item->id }}" route="admin.fakultas.destroy" />
+                                            <x-admin.prodi.form-prodi id="{{ $item->id }}" />
+                                            <x-confirm-delete id="{{ $item->id }}" route="admin.prodi.destroy" />
                                         </div>
                                     </td>
                                 </tr>
                             @empty
                                 <tr>
-                                    <td colspan="6" class="text-center py-5">
-                                        <div class="text-muted"> <i class="bi bi-building fs-1 d-block mb-3"></i>
-                                            <h6 class="mb-1"> Belum ada data Fakultas </h6>
-                                            <p class="small mb-0"> Data fakultas yang ditambahkan akan muncul di sini. </p>
+                                    <td colspan="8" class="text-center py-5">
+                                        <div class="text-muted"> <i class="bi bi-diagram-3 fs-1 d-block mb-3"></i>
+                                            <h6 class="mb-1"> Belum ada data Prodi </h6>
+                                            <p class="small mb-0"> Data prodi yang ditambahkan akan muncul di sini. </p>
                                         </div>
                                     </td>
                                 </tr>
@@ -101,7 +108,7 @@
                         </tbody>
                     </table>
                 </div>
-                {{ $fakultas->links() }}
+                {{ $prodi->links() }}
             </div>
         </div>
     </div>

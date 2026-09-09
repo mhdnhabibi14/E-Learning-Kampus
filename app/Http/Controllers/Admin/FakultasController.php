@@ -24,9 +24,12 @@ class FakultasController extends Controller
 
         $search = request()->query('search');
         if ($search) {
-            $query->where('nama_fakultas', 'like', "%{$search}%");
+            $query->where(function ($q) use ($search) {
+                $q->where('kode_fakultas', 'like', "%{$search}%")
+                    ->orWhere('nama_fakultas', 'like', "%{$search}%");
+            });
         }
-        $fakultas = $query->paginate($perPage)->appends(request()->query());
+        $fakultas = $query->latest()->paginate($perPage)->appends(request()->query());
         confirmDelete('Hapus Fakultas', 'Apakah Anda yakin ingin menghapus fakultas ini? Tindakan ini tidak dapat dibatalkan.');
         return view('admin.fakultas.index', compact('fakultas', 'pageTitle'));
     }
