@@ -27,8 +27,13 @@
                                 </div>
 
                                 {{-- Search --}}
-                                <div class="col-md-7">
+                                <div class="col-md-4">
                                     <x-filter-by-field term="search" placeholder="Cari Program Studi..." />
+                                </div>
+
+                                {{-- Filter by Fakultas --}}
+                                <div class="col-md-3">
+                                    <x-admin.prodi.filter-by-fakultas />
                                 </div>
 
                                 {{-- Reset Filter --}}

@@ -15,20 +15,25 @@ class ProdiController extends Controller
     public function index()
     {
         $pageTitle = $this->pageTitle;
+        // perpage
         $perPage = request()->query('perPage', 10);
-
         if (!in_array($perPage, [10, 25, 50, 100])) {
             $perPage = 10;
         }
 
         $query = Prodi::with('fakultas');
-
+        // filerbyfield
         $search = request()->query('search');
         if ($search) {
             $query->where(function ($q) use ($search) {
                 $q->where('kode_prodi', 'like', "%{$search}%")
                     ->orWhere('nama_prodi', 'like', "%{$search}%");
             });
+        }
+        // filterbyfakultas
+        $fakultasId = request()->query('fakultas_id');
+        if ($fakultasId) {
+            $query->where('fakultas_id', $fakultasId);
         }
 
         $prodi = $query->latest()->paginate($perPage)->appends(request()->query());
