@@ -15,7 +15,7 @@
 
         <div class="card">
             <div class="card-body py-1">
-                <div class="row align-items-center mb-4">
+                <div class="row align-items-center mb-5">
                     {{-- Per Page + Search --}}
                     <div class="col-md-9">
                         <form method="GET" action="{{ route('admin.prodi.index') }}">

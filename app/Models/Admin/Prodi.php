@@ -4,6 +4,7 @@ namespace App\Models\Admin;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Prodi extends Model
@@ -28,5 +29,10 @@ class Prodi extends Model
     public function fakultas(): BelongsTo
     {
         return $this->belongsTo(Fakultas::class);
+    }
+
+    public function mataKuliah(): HasMany
+    {
+        return $this->hasMany(MataKuliah::class);
     }
 }
