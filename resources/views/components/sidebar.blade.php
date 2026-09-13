@@ -53,7 +53,8 @@
                         </a>
                     </li>
                     <li class="sidebar-menu-item">
-                        <a href="#" class="sidebar-menu-link">
+                        <a href="{{ route('admin.tahun-akademik.index') }}"
+                            class="sidebar-menu-link {{ request()->routeIs($role . '.tahun-akademik.index') ? 'active' : '' }}">
                             <i class="bi bi-calendar3"></i>
                             <span>Tahun Akademik</span>
                         </a>
