@@ -23,7 +23,7 @@ class StoreMataKuliahRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'program_studi_id' => 'required|exists:program_studi,id',
+            'program_studi_id' => 'required|exists:prodi,id',
             'kode_mata_kuliah' => 'required|unique:mata_kuliah,kode_mata_kuliah',
             'nama_mata_kuliah' => 'required',
             'sks'              => 'required|min:1|max:6',

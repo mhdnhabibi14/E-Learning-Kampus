@@ -59,9 +59,9 @@
                         </a>
                     </li>
                     <li class="sidebar-menu-item">
-                        <a href="{{ route('admin.mata-kuliah.index') }}" class="sidebar-menu-link">
-                            <i
-                                class="bi bi-journal-bookmark {{ request()->routeIs($role . '.mata-kuliah.index') ? 'active' : '' }}"></i>
+                        <a href="{{ route('admin.mata-kuliah.index') }}"
+                            class="sidebar-menu-link {{ request()->routeIs($role . '.mata-kuliah.index') ? 'active' : '' }}">
+                            <i class="bi bi-journal-bookmark"></i>
                             <span>Mata Kuliah</span>
                         </a>
                     </li>

@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('mata_kuliah', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('program_studi_id')->constrained('program_studi')->cascadeOnUpdate()->cascadeOnDelete();
+            $table->foreignId('program_studi_id')->constrained('prodi')->cascadeOnUpdate()->cascadeOnDelete();
             $table->string('kode_mata_kuliah', 20)->unique();
             $table->string('nama_mata_kuliah', 100);
             $table->unsignedTinyInteger('sks');

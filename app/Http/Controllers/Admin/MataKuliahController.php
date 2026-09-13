@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\StoreMataKuliahRequest;
-use App\Http\Requests\Admin\UpdateFakultasRequest;
+use App\Http\Requests\Admin\UpdateMataKuliahRequest;
 use App\Models\Admin\MataKuliah;
 use Illuminate\Http\Request;
 
@@ -62,7 +62,7 @@ class MataKuliahController extends Controller
         return redirect()->route('admin.mata-kuliah.index');
     }
 
-    public function update(UpdateFakultasRequest $request, MataKuliah $mataKuliah)
+    public function update(UpdateMataKuliahRequest $request, MataKuliah $mataKuliah)
     {
         $mataKuliah->program_studi_id = $request->program_studi_id;
         $mataKuliah->kode_mata_kuliah = $request->kode_mata_kuliah;

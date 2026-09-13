@@ -12,42 +12,35 @@
                     Kelola data fakultas
                 </p>
             </div>
+            {{-- Action --}}
+            <div>
+                <x-admin.fakultas.form-fakultas />
+            </div>
         </div>
 
-        <div class="card">
+        <div class="card border-0 shadow-sm">
             <div class="card-body py-1">
-                <div class="row align-items-center mb-5">
-                    {{-- Per Page + Search --}}
-                    <div class="col-md-9">
-                        <form method="GET" action="{{ route('admin.fakultas.index') }}">
-                            <div class="row align-items-center">
+                <form method="GET" action="{{ route('admin.fakultas.index') }}">
+                    <div class="d-flex flex-column flex-md-row align-items-md-center gap-2">
 
-                                {{-- Per Page --}}
-                                <div class="col-md-3">
-                                    <x-per-page-option />
-                                </div>
+                        {{-- Per Page --}}
+                        <div>
+                            <x-per-page-option />
+                        </div>
 
-                                {{-- Search --}}
-                                <div class="col-md-7">
-                                    <x-filter-by-field term="search" placeholder="Cari Fakultas..." />
-                                </div>
+                        {{-- Search --}}
+                        <div class="flex-grow-1">
+                            <x-filter-by-field term="search" placeholder="Cari Fakultas..." />
+                        </div>
 
-                                {{-- Reset Filter --}}
-                                <div class="col-md-2">
-                                    <x-button-reset-filter route="admin.fakultas.index" />
-                                </div>
-                            </div>
-                        </form>
+                        {{-- Reset Filter --}}
+                        <div>
+                            <x-button-reset-filter route="admin.fakultas.index" />
+                        </div>
                     </div>
+                </form>
 
-                    {{-- Action --}}
-                    <div class="col-md-3 d-flex justify-content-end">
-                        <x-admin.fakultas.form-fakultas />
-                    </div>
-
-                </div>
-
-                <div class="table-responsive">
+                <div class="table-responsive mt-5">
                     <table class="table">
                         <thead>
                             <tr>
