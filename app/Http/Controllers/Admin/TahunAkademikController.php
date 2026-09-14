@@ -31,12 +31,9 @@ class TahunAkademikController extends Controller
             });
         }
 
-        $status = request()->query('status');
-        if ($status === 'aktif') {
-            $query->where('is_active', true);
-        }
-        if ($status === 'tidak_aktif') {
-            $query->where('is_active', false);
+        $semester = request()->query('semester');
+        if ($semester && in_array($semester, ['Ganjil', 'Genap'], true)) {
+            $query->where('semester', $semester);
         }
 
         $tahunAkademik = $query->orderByDesc('tanggal_mulai')->paginate($perPage)->appends(request()->query());
@@ -46,11 +43,9 @@ class TahunAkademikController extends Controller
 
     public function store(StoreTahunAkademikRequest $request)
     {
-        if (! empty($tahunAkademik['is_active'])) {
-            TahunAkademik::where('is_active', true)
-                ->update([
-                    'is_active' => false,
-                ]);
+        if ((bool) $request->is_active === true) {
+            TahunAkademik::query()->where('is_active', true)
+                ->update(['is_active' => false,]);
         }
 
         TahunAkademik::create([
@@ -68,12 +63,11 @@ class TahunAkademikController extends Controller
 
     public function update(UpdateTahunAkademikRequest $request, TahunAkademik $tahunAkademik)
     {
-        if (! empty($tahunAkademik['is_active'])) {
-            TahunAkademik::where('id', '!=', $tahunAkademik->id)
+        $data = $request->validated();
+        if ((bool) $data['is_active'] === true) {
+            TahunAkademik::query()->where('id', '!=', $tahunAkademik->id)
                 ->where('is_active', true)
-                ->update([
-                    'is_active' => false,
-                ]);
+                ->update(['is_active' => false,]);
         }
 
         $tahunAkademik->kode_tahun_akademik = $request->kode_tahun_akademik;
@@ -90,6 +84,11 @@ class TahunAkademikController extends Controller
 
     public function destroy(TahunAkademik $tahunAkademik)
     {
+        if ($tahunAkademik->is_active) {
+            toast()->error('Tahun Akademik yang sedang aktif tidak dapat dihapus.');
+            return redirect()->route('admin.tahun-akademik.index');
+        }
+
         $tahunAkademik->delete();
         toast()->success('Tahun Akademik berhasil dihapus.');
         return redirect()->route('admin.tahun-akademik.index');

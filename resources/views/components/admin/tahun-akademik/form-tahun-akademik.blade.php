@@ -129,9 +129,7 @@
                             </select>
                             @if ($useOld)
                                 @error('is_active')
-                                    <small class="text-danger">
-                                        {{ $message }}
-                                    </small>
+                                    <small class="text-danger">{{ $message }}</small>
                                 @enderror
                             @endif
                         </div>

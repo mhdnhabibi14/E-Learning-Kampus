@@ -32,9 +32,9 @@
                             <x-filter-by-field term="search" placeholder="Cari Tahun Akademik..." />
                         </div>
 
-                        {{-- Filter by Status --}}
+                        {{-- Filter by Semester --}}
                         <div>
-
+                            <x-admin.tahun-akademik.filter-by-semester />
                         </div>
 
                         {{-- Reset Filter --}}
