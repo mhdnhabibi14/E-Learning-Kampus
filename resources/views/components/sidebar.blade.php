@@ -67,7 +67,8 @@
                         </a>
                     </li>
                     <li class="sidebar-menu-item">
-                        <a href="#" class="sidebar-menu-link">
+                        <a href="{{ route('admin.kelas.index') }}"
+                            class="sidebar-menu-link {{ request()->routeIs($role . '.kelas.index') ? 'active' : '' }}">
                             <i class="bi bi-easel"></i>
                             <span>Kelas</span>
                         </a>

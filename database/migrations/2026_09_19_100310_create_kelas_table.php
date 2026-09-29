@@ -17,7 +17,7 @@ return new class extends Migration
             $table->foreignId('tahun_akademik_id')->constrained('tahun_akademik')->cascadeOnUpdate()->restrictOnDelete();
             $table->string('kode_kelas', 20);
             $table->string('nama_kelas', 100);
-            $table->unsignedInteger('kouta');
+            $table->unsignedInteger('kuota');
             $table->text('deskripsi')->nullable();
             $table->enum('status', ['draft', 'aktif', 'selesai', 'nonaktif',])->default('draft');
             $table->timestamps();

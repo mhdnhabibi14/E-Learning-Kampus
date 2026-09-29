@@ -25,19 +25,43 @@ class StoreKelasRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'mata_kuliah_id'        => 'required|exists:mata_kuliah,id',
-            'tahun_akademik_id'     => 'required|exists:tahun_akademik,id',
-            'kode_kelas'            => 'required',
-            Rule::unique('kelas', 'kode_kelas')
-                ->where(function ($query) {
-                    return $query
-                        ->where('mata_kuliah_id', $this->mata_kuliah_id)
-                        ->where('tahun_akademik_id', $this->tahun_akademik_id);
-                }),
-            'nama_kelas'            => 'required',
-            'kuota'                 => 'required|min:15',
-            'deskripsi'             => 'nullable',
-            'status'                => 'required|in:draft,aktif,selesai,nonaktif',
+            'mata_kuliah_id' => [
+                'required',
+                'exists:mata_kuliah,id',
+            ],
+
+            'tahun_akademik_id' => [
+                'required',
+                'exists:tahun_akademik,id',
+            ],
+
+            'kode_kelas' => [
+                'required',
+                Rule::unique('kelas', 'kode_kelas')
+                    ->where(function ($query) {
+                        return $query
+                            ->where('mata_kuliah_id', $this->mata_kuliah_id)
+                            ->where('tahun_akademik_id', $this->tahun_akademik_id);
+                    }),
+            ],
+
+            'nama_kelas' => [
+                'required',
+            ],
+
+            'kuota' => [
+                'required',
+                'min:1',
+            ],
+
+            'deskripsi' => [
+                'nullable',
+            ],
+
+            'status' => [
+                'required',
+                'in:draft,aktif,selesai,nonaktif',
+            ],
         ];
     }
 
@@ -47,7 +71,7 @@ class StoreKelasRequest extends FormRequest
             ->back()
             ->withErrors($validator)
             ->withInput()
-            ->with('open_modal', 'formkelasnew');
+            ->with('open_modal', 'formKelasnew');
 
         throw new \Illuminate\Http\Exceptions\HttpResponseException($response);
     }
