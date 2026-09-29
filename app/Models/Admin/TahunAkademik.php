@@ -3,6 +3,7 @@
 namespace App\Models\Admin;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class TahunAkademik extends Model
@@ -25,4 +26,9 @@ class TahunAkademik extends Model
         'tanggal_selesai' => 'date',
         'is_active' => 'boolean',
     ];
+
+    public function kelas(): HasMany
+    {
+        return $this->hasMany(Kelas::class);
+    }
 }

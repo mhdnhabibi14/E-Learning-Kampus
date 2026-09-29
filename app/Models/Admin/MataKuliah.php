@@ -4,6 +4,7 @@ namespace App\Models\Admin;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class MataKuliah extends Model
@@ -31,5 +32,10 @@ class MataKuliah extends Model
     public function programStudi(): BelongsTo
     {
         return $this->belongsTo(Prodi::class);
+    }
+
+    public function kelas(): HasMany
+    {
+        return $this->hasMany(Kelas::class);
     }
 }
